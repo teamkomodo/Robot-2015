@@ -115,17 +115,17 @@ void Robot::DriveControl(Joystick *inputStick , int override, float autoStraight
 
 				//1 gamepad joystick arcade controls
 		case ARCADE_GAMEPAD_1:
-			myRobot.ArcadeDrive(gPad.GetRawAxis(GAMEPAD_LEFT_STICK_Y),-gPad.GetRawAxis(GAMEPAD_LEFT_STICK_X));
+			myRobot.ArcadeDrive(gPad.GetRawAxis(GAMEPAD_1_STICK_Y),-gPad.GetRawAxis(GAMEPAD_LEFT_STICK_X));
 			break;
 
 				//2 gamepad joystick arcade split controls
 		case ARCADE_GAMEPAD_2:
-			myRobot.ArcadeDrive(-gPad.GetRawAxis(GAMEPAD_LEFT_STICK_Y),-gPad.GetRawAxis(GAMEPAD_RIGHT_STICK_X));
+			myRobot.ArcadeDrive(-gPad.GetRawAxis(GAMEPAD_1_STICK_Y),-gPad.GetRawAxis(GAMEPAD_2_STICK_X));
 			break;
 
 				//2 joystick gamepad tank drive
 		case TANK_GAMEPAD:
-			myRobot.TankDrive(-gPad.GetRawAxis(GAMEPAD_LEFT_STICK_Y), -gPad.GetRawAxis(GAMEPAD_RIGHT_STICK_Y));
+			myRobot.TankDrive(-gPad.GetRawAxis(GAMEPAD_1_STICK_Y), -gPad.GetRawAxis(GAMEPAD_RIGHT_STICK_Y));
 			break;
 
 				//2 joystick tank drive
@@ -189,7 +189,7 @@ bool Robot::IsTurning(float autoTurn)
 		break;
 		//2 joysticks
 		case ARCADE_GAMEPAD_2:
-		if(fabs(gPad.GetRawAxis(GAMEPAD_RIGHT_STICK_X)) > GPAD_DEAD_ZONE)
+		if(fabs(gPad.GetRawAxis(GAMEPAD_2_STICK_X)) > GPAD_DEAD_ZONE)
 		{
 			turning = true;
 		}
@@ -200,7 +200,7 @@ bool Robot::IsTurning(float autoTurn)
 		break;
 
 	case TANK_GAMEPAD:
-		if(fabs(gPad.GetRawAxis(GAMEPAD_RIGHT_STICK_Y) - gPad.GetRawAxis(GAMEPAD_LEFT_STICK_Y)) > GPAD_TURN_THRESHOLD)
+		if(fabs(gPad.GetRawAxis(GAMEPAD_RIGHT_STICK_Y) - gPad.GetRawAxis(GAMEPAD_1_STICK_Y)) > GPAD_TURN_THRESHOLD)
 		{
 			turning = true;
 		}
@@ -279,6 +279,20 @@ void Robot::GyroDrive(float autoStraight)
 }
 
 */
+void Robot::DriveForDistance(float inches){
+	encoder1.Reset();
+	if (inches>0){//if inches are positive we want to go forward
+		while(encoder1.GetRaw()<inches*ENCODER_VALUES_PER_INCH){
+			//drive forward
+		}
+		//stop
+	}else{//otherwise we are going backward
+		while(encoder1.GetRaw()>inches*ENCODER_VALUES_PER_INCH){
+			//drive backward
+		}
+		//stop
+	}
+}
 
 void Robot::ButtonControl()
 

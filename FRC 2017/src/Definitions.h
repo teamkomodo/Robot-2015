@@ -1,10 +1,11 @@
 #ifndef _DEFINITIONS_H
 #define _DEFINITIONS_H
 
+#define ENCODER_VALUES_PER_INCH				23//how much the encoder value for a motor changes by when the robot moves one inch
 //Control device input channels
 #define RIGHT_JOYSTICK_INPUT_CHANNEL		0
 #define LEFT_JOYSTICK_INPUT_CHANNEL			1
-#define GAMEPAD_INPUT_CHANNEL				2
+#define GAMEPAD_2_INPUT_CHANNEL				2
 #define DRIVE_STATION_INPUT_CHANNEL			3
 
 //Joystick Axes
@@ -34,10 +35,10 @@
 
 //Gamepad input channels
 #ifdef GAMEPAD_DOLPHIN
-#define GAMEPAD_LEFT_STICK_Y			1 //All experimentally confirmed
+#define GAMEPAD_1_STICK_Y			1 //All experimentally confirmed
 #define GAMEPAD_LEFT_STICK_X			0
 #define GAMEPAD_RIGHT_STICK_Y			5
-#define GAMEPAD_RIGHT_STICK_X			4
+#define GAMEPAD_2_STICK_X			4
 #define GAMEPAD_LEFT_BUMPER				5
 #define GAMEPAD_RIGHT_BUMPER			6
 #define GAMEPAD_BUTTON_X				3
@@ -54,10 +55,10 @@
 #endif
 
 #ifdef GAMEPAD_FOX
-#define GAMEPAD_LEFT_STICK_Y			1
+#define GAMEPAD_1_STICK_Y			1
 #define GAMEPAD_LEFT_STICK_X			0
 #define GAMEPAD_RIGHT_STICK_Y			3
-#define GAMEPAD_RIGHT_STICK_X			2
+#define GAMEPAD_2_STICK_X			2
 #define GAMEPAD_LEFT_BUMPER				7 //5 for top bumper
 #define GAMEPAD_RIGHT_BUMPER			8 //6 for top bumper
 #define GAMEPAD_BUTTON_X				1

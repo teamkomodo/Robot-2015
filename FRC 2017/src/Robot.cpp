@@ -50,7 +50,7 @@ public:
 		myRobot(LEFT_DRIVE_CONTROL, RIGHT_DRIVE_CONTROL),	// these must be initialized in the same order
 		rStick(RIGHT_JOYSTICK_INPUT_CHANNEL),		// as they are declared above.
 		lStick(LEFT_JOYSTICK_INPUT_CHANNEL),
-		gPad(GAMEPAD_INPUT_CHANNEL),
+		gPad(GAMEPAD_2_INPUT_CHANNEL),
 		driveStationInput(DRIVE_STATION_INPUT_CHANNEL),
 		lw(NULL),
 		autoLoopCounter(0),
@@ -117,6 +117,8 @@ private:
 
   	void AutoPlaceBinOnly();
 
+  	void DriveForDistance(float);
+
 	void AutonomousPeriodic()
 	{
 
@@ -163,17 +165,17 @@ private:
 		}
 		if(driveOption == ARCADE_GAMEPAD_1)
 		{
-			SmartDashboard::PutNumber("Gamepad Left Stick Y", -gPad.GetRawAxis(GAMEPAD_LEFT_STICK_Y));
+			SmartDashboard::PutNumber("Gamepad Left Stick Y", -gPad.GetRawAxis(GAMEPAD_1_STICK_Y));
 			SmartDashboard::PutNumber("Gamepad Left Stick X", -gPad.GetRawAxis(GAMEPAD_LEFT_STICK_X));
 		}
 		if(driveOption == ARCADE_GAMEPAD_2)
 		{
-			SmartDashboard::PutNumber("Gamepad Left Stick Y", -gPad.GetRawAxis(GAMEPAD_LEFT_STICK_Y));
-			SmartDashboard::PutNumber("Gamepad Right Stick X", -gPad.GetRawAxis(GAMEPAD_RIGHT_STICK_X));
+			SmartDashboard::PutNumber("Gamepad Left Stick Y", -gPad.GetRawAxis(GAMEPAD_1_STICK_Y));
+			SmartDashboard::PutNumber("Gamepad Right Stick X", -gPad.GetRawAxis(GAMEPAD_2_STICK_X));
 		}
 		if(driveOption == TANK_GAMEPAD)
 		{
-			SmartDashboard::PutNumber("Gamepad Left Stick Y", -gPad.GetRawAxis(GAMEPAD_LEFT_STICK_Y));
+			SmartDashboard::PutNumber("Gamepad Left Stick Y", -gPad.GetRawAxis(GAMEPAD_1_STICK_Y));
 			SmartDashboard::PutNumber("Gamepad Right Stick Y", -gPad.GetRawAxis(GAMEPAD_RIGHT_STICK_Y));
 		}
 		if(showGyro == true)
